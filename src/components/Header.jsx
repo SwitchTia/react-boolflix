@@ -25,7 +25,7 @@ function Header({ searchQuery, setSearchQuery, handleSearch }) {
           />
 
           <button onClick={handleSearch}>
-            <i className="fas fa-search"></i>
+            <i className="fas fa-search">Search</i>
           </button>
 
         </div>
