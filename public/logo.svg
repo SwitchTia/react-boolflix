@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="31.88" height="32"
+     viewBox="0 0 256 257"
+     preserveAspectRatio="xMidYMid meet">
+
+  <rect width="256" height="257" fill="#000000"/>
+
+  <text x="128"
+        y="190"
+        text-anchor="middle"
+        fill="#E50914"
+        font-size="220"
+        font-weight="700"
+        font-family="Times New Roman, Georgia, serif">
+    B
+  </text>
+
+</svg>

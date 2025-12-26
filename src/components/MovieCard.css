@@ -4,7 +4,7 @@
   overflow: hidden;
   transition: transform 0.3s;
   cursor: pointer;
-  background-color: #1a1a1a;
+  background-color: #201f1f;
 }
 
 .movie-card:hover {
