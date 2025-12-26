@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Cabin', sans-serif;
+  color: rgb(70, 63, 108);
+  
+}
+
+img {
+  width: 100%;
+}
