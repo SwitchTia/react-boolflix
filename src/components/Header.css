@@ -6,3 +6,44 @@
     z-index: 1000;
 }
 
+.header-content {
+    max-width: 1400px;
+    gap: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 34px;
+    color: rgb(197, 59, 59);
+    font-weight: bolder;
+    letter-spacing: 3px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 20px;
+    max-width: 500px;
+    flex: 1;
+}
+
+.search-bar input {
+    background-color: grey;
+    color: white;
+    border: 1px solid rgb(37, 36, 36);
+    border-radius: 5px;
+    font-size: 15px;
+
+    padding: 15px 20px;
+    flex: 1;
+}
+
+.search-bar button {
+    background-color:  rgb(197, 59, 59);
+    color: white;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-size: 15px;
+}

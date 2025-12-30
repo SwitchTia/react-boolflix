@@ -1,4 +1,4 @@
-
+import "./Header.css"
 
 function Header ({ searchQuery, setSearchQuery,}) {
 
@@ -12,8 +12,10 @@ function Header ({ searchQuery, setSearchQuery,}) {
                         type="text" 
                         placeholder="Searching for something?"
                         />
+
+                    <button>Search</button>
                 </div>
-                <button>Search</button>
+                
             </div>
         </header>
     )
