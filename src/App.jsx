@@ -37,6 +37,32 @@ function App() {
         })
       }
 
+      axios.get(`${BASE_URL}/search/tv`, {
+        params: {
+          api_key: API_KEY,
+          query: searchQuery,
+          language: "it-IT"
+        }
+      })
+      .then((response) => {
+        const tvShows = response.data.results;
+
+        const tvShowsWithType = [];
+        for (let i = 0; i < tvShows.length; i++){
+          tvShowsWithType.push({
+            ...tvShows[i],
+            type: "tv"
+          })
+        }
+      })
+
+      const allResults = moviesWithType.concat(tvShowsWithType);
+
+      setSearchedMovieList(allResults);
+
+    })
+    .catch((error) => {
+      console.error("Errpr searching: ", error)
     })
   }
 
@@ -51,8 +77,8 @@ function App() {
         handleSearch = {handleSearch}
         />
 
-      <main>
-        <div>
+      <main className="main-content">
+        <div className="cards-container">
           {searchedMovieList.map((movie) => (
 
             <MovieCard
