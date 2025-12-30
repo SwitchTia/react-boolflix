@@ -3,11 +3,11 @@
 function Header ({ searchQuery, setSearchQuery,}) {
 
     return(
-        <header>
-            <div>
-                <div>BOOLFLIX</div>
+        <header className="header">
+            <div className="header-content">
+                <div className="logo">BOOLFLIX</div>
 
-                <div>
+                <div className="search-bar">
                     <input 
                         type="text" 
                         placeholder="Searching for something?"
@@ -18,3 +18,5 @@ function Header ({ searchQuery, setSearchQuery,}) {
         </header>
     )
 }
+
+export default Header
