@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.jsx";
+import "./App.css";
 import Header from "./components/Header.jsx";
 import MovieCard from "./components/MovieCard";
 import axios from "axios";
@@ -7,6 +7,7 @@ import axios from "axios";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+
   const [searchedMovieList, setSearchedMovieList] = useState([]);
 
 
@@ -15,54 +16,47 @@ function App() {
   
 
 
-  function handleSearch () {
+ function handleSearch() {
     if (!searchQuery) return
 
-
+    // Search for movies
     axios.get(`${BASE_URL}/search/movie`, {
       params: {
         api_key: API_KEY,
         query: searchQuery,
-        language: "it-IT"
+        language: 'it-IT'
       }
     })
+
     .then((moviesResponse) => {
-      const movies = moviesResponse.data.results; 
+      // Add type to movies
+      const movies = moviesResponse.data.results.map(movie => ({
+        ...movie,
+        type: 'movie'
+      }))
 
-      const moviesWithType = [];
-      for (let i = 0; i< movies.length; i++){
-        moviesWithType.push({
-          ...movies[i],
-          type: "movie"
-        })
-      }
-
-      axios.get(`${BASE_URL}/search/tv`, {
+      // Search for TV shows
+      return axios.get(`${BASE_URL}/search/tv`, {
         params: {
           api_key: API_KEY,
           query: searchQuery,
-          language: "it-IT"
-        }
-      })
-      .then((response) => {
-        const tvShows = response.data.results;
-
-        const tvShowsWithType = [];
-        for (let i = 0; i < tvShows.length; i++){
-          tvShowsWithType.push({
-            ...tvShows[i],
-            type: "tv"
-          })
+          language: 'it-IT'
         }
       })
 
-      const allResults = moviesWithType.concat(tvShowsWithType);
+      .then((tvResponse) => {
+        // Add type to TV shows
+        const tvShows = tvResponse.data.results.map(show => ({
+          ...show,
+          type: 'tv'
+        }))
 
-      setSearchedMovieList(allResults);
-
+        // Combine both results
+        setSearchedMovieList([...movies, ...tvShows])
+      })
     })
     .catch((error) => {
-      console.error("Errpr searching: ", error)
+      console.error('Error searching:', error)
     })
   }
 
@@ -70,7 +64,7 @@ function App() {
 
 
   return (
-    <div >
+    <div className="App">
       <Header
         searchQuery = {searchQuery}
         setSearchQuery = {setSearchQuery}
@@ -82,7 +76,7 @@ function App() {
           {searchedMovieList.map((movie) => (
 
             <MovieCard
-              key={movie.id}
+              key={`${movie.type}-${movie.id}`}
               movie={movie}/>
           ))}
           

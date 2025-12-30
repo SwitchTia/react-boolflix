@@ -20,7 +20,7 @@ function MovieCard ({ movie }) {
         <div className="movie-card">
             <div className="card-img">
 
-                <img src={moviePosterUrl} alt={title} />
+                <img src={moviePosterUrl} alt={movieTitle} />
 
             </div>
 
