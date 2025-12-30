@@ -21,6 +21,9 @@
     font-weight: bolder;
     letter-spacing: 3px;
 }
+.logo:hover {
+    transform: scale(1.1);
+}
 
 .search-bar {
     display: flex;
@@ -38,12 +41,25 @@
 
     padding: 15px 20px;
     flex: 1;
+    outline: none;
+}
+
+.search-bar input:hover {
+    border-color: rgb(197, 59, 59);
 }
 
 .search-bar button {
     background-color:  rgb(197, 59, 59);
     color: white;
-    text-transform: uppercase;
+    border: none;
     border-radius: 5px;
     font-size: 15px;
+
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: rgb(235, 154, 166);
+    color: rgb(196, 47, 47);
 }
