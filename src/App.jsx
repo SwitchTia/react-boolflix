@@ -76,7 +76,7 @@ function App() {
           {searchedMovieList.map((movie) => (
 
             <MovieCard
-              key={`${movie.type}-${movie.id}`}
+              key={movie.id}
               movie={movie}/>
           ))}
           

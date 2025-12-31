@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="31.88"
+     height="32"
+     viewBox="0 0 256 420"
+     preserveAspectRatio="xMidYMid meet">
+
+  <!-- Strong vertical stretch (x2 height, same width) -->
+  <text x="128"
+        y="260"
+        text-anchor="middle"
+        fill="#E50914"
+        font-size="240"
+        font-weight="700"
+        font-family="Times New Roman, Georgia, serif"
+        transform="scale(1,2)"
+        transform-origin="center">
+    B
+  </text>
+
+</svg>
