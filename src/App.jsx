@@ -13,10 +13,10 @@ function App() {
 
   const API_KEY = import.meta.env.VITE_API_KEY;//importing the key from enviroment variable
   const BASE_URL = 'https://api.themoviedb.org/3';
-  
 
 
- function handleSearch() {
+
+  function handleSearch() {
     if (!searchQuery) return
 
     // Search for movies
@@ -28,36 +28,36 @@ function App() {
       }
     })
 
-    .then((moviesResponse) => {
-      // Add type to movies
-      const movies = moviesResponse.data.results.map(movie => ({
-        ...movie,
-        type: 'movie'
-      }))
-
-      // Search for TV shows
-      return axios.get(`${BASE_URL}/search/tv`, {
-        params: {
-          api_key: API_KEY,
-          query: searchQuery,
-          language: 'it-IT'
-        }
-      })
-
-      .then((tvResponse) => {
-        // Add type to TV shows
-        const tvShows = tvResponse.data.results.map(show => ({
-          ...show,
-          type: 'tv'
+      .then((moviesResponse) => {
+        // Add type to movies
+        const movies = moviesResponse.data.results.map(movie => ({
+          ...movie,
+          type: 'movie'
         }))
 
-        // Combine both results
-        setSearchedMovieList([...movies, ...tvShows])
+        // Search for TV shows
+        return axios.get(`${BASE_URL}/search/tv`, {
+          params: {
+            api_key: API_KEY,
+            query: searchQuery,
+            language: 'it-IT'
+          }
+        })
+
+          .then((tvResponse) => {
+            // Add type to TV shows
+            const tvShows = tvResponse.data.results.map(show => ({
+              ...show,
+              type: 'tv'
+            }))
+
+            // Combine both results
+            setSearchedMovieList([...movies, ...tvShows])
+          })
       })
-    })
-    .catch((error) => {
-      console.error('Error searching:', error)
-    })
+      .catch((error) => {
+        console.error('Error searching:', error)
+      })
   }
 
 
@@ -65,11 +65,12 @@ function App() {
 
   return (
     <div className="App">
+
       <Header
-        searchQuery = {searchQuery}
-        setSearchQuery = {setSearchQuery}
-        handleSearch = {handleSearch}
-        />
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        handleSearch={handleSearch}
+      />
 
       <main className="main-content">
         <div className="cards-container">
@@ -77,12 +78,12 @@ function App() {
 
             <MovieCard
               key={movie.id}
-              movie={movie}/>
+              movie={movie} />
           ))}
-          
+
         </div>
       </main>
-      
+
     </div>
   )
 }
