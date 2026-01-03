@@ -1,4 +1,7 @@
-import "./MovieCard.css"
+import "./MovieCard.css";
+import StarEmpty from "../assets/StarEmpty";
+import StarFull from "../assets/StarFull";
+
 
 function MovieCard({ movie }) {
     const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w342";
@@ -16,23 +19,47 @@ function MovieCard({ movie }) {
         ? `${IMAGE_BASE_URL}${movie.poster_path}`
         : "https://via.placeholder.com/342x513?text=No+Image";
 
+    //stars
+    function convertVoteToStars (vote){
+        const stars = Math.ceil(vote/2);
+        return stars;
+    }
+    function renderStars(){
+        const starCount = convertVoteToStars(movie.vote_average);
+        const stars = [];
+
+        for (let i = 1; i <= 5; i++){
+            if(i <= starCount){
+                stars.push(<StarFull key={i} />);
+            }
+            else{
+                stars.push(<StarEmpty key={i} />);
+            }
+        }
+        return stars;
+
+    }
+
     return (
-  
-            <div className="movie-card">
-                <div className="card-img">
 
-                    <img src={moviePosterUrl} alt={movieTitle} />
+        <div className="movie-card">
+            <div className="card-img">
 
-                </div>
+                <img src={moviePosterUrl} alt={movieTitle} />
 
-                <div className="card-info">
-
-                    <h3 className="card-title"> {movieTitle}</h3>
-
-                </div>
             </div>
 
-     
+            <div className="card-info">
+
+                <h3 className="card-title"> {movieTitle}</h3>
+                <div>
+                    {renderStars}
+                </div>
+
+            </div>
+        </div>
+
+
     )
 
 }
