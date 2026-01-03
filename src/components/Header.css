@@ -20,9 +20,11 @@
     color: rgb(197, 59, 59);
     font-weight: bolder;
     letter-spacing: 3px;
+    margin-left: 40px;
 }
+
 .logo:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .search-bar {
@@ -33,7 +35,7 @@
 }
 
 .search-bar input {
-    background-color: grey;
+    background-color: rgb(53, 52, 52);
     color: white;
     border: 1px solid rgb(37, 36, 36);
     border-radius: 5px;
