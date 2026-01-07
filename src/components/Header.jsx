@@ -1,7 +1,7 @@
 import "./Header.css";
-import { useContext, useState } from "react";
-import { MovieContext } from "../context/MovieContext";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 function Header() {
