@@ -1,21 +1,19 @@
 import "./Header.css";
-import { useState } from "react";
-import axios from "axios";
+import { useContext, useState } from "react";
+import { MovieContext } from "../context/MovieContext";
+import { Link } from "react-router-dom";
 
-function Header({ searchedMovieList, setSearchedMovieList }) {
+
+function Header() {
 
     const [searchQuery, setSearchQuery] = useState("");
 
-
-    const API_KEY = import.meta.env.VITE_API_KEY;//importing the key from enviroment variable
+    const API_KEY = import.meta.env.VITE_API_KEY;
     const BASE_URL = 'https://api.themoviedb.org/3';
 
-
-
     function handleSearch() {
-        if (!searchQuery) return
+        if (!searchQuery) return;
 
-        // Search for movies
         axios.get(`${BASE_URL}/search/movie`, {
             params: {
                 api_key: API_KEY,
@@ -23,15 +21,12 @@ function Header({ searchedMovieList, setSearchedMovieList }) {
                 language: 'it-IT'
             }
         })
-
             .then((moviesResponse) => {
-                // Add type to movies
                 const movies = moviesResponse.data.results.map(movie => ({
                     ...movie,
                     type: 'movie'
-                }))
+                }));
 
-                // Search for TV shows
                 return axios.get(`${BASE_URL}/search/tv`, {
                     params: {
                         api_key: API_KEY,
@@ -39,22 +34,21 @@ function Header({ searchedMovieList, setSearchedMovieList }) {
                         language: 'it-IT'
                     }
                 })
-
                     .then((tvResponse) => {
-                        // Add type to TV shows
                         const tvShows = tvResponse.data.results.map(show => ({
                             ...show,
                             type: 'tv'
-                        }))
+                        }));
 
-                        // Combine both results
-                        setSearchedMovieList([...movies, ...tvShows])
-                    })
+                        setMoviesList([...movies, ...tvShows]);
+                    });
             })
             .catch((error) => {
-                console.error('Error searching:', error)
-            })
+                console.error('Error searching:', error);
+            });
     }
+
+
 
     function handleKeyPress(event) {
         if (event.key === "Enter") {
@@ -66,6 +60,13 @@ function Header({ searchedMovieList, setSearchedMovieList }) {
         <header className="header">
             <div className="header-content">
                 <div className="logo">BOOLFLIX</div>
+
+                <nav>
+                    <Link to="/">Home</Link>
+                    <Link to="/movies">Movies</Link>
+                    <Link to="/shows">TV-Shows</Link>
+                    <Link to="/my-list">My List</Link>
+                </nav>
 
                 <div className="search-bar">
                     <input

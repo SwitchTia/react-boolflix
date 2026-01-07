@@ -5,7 +5,9 @@ export default function DefaultLayout() {
 
     return (
         <>
-        <Header />
+        <Header 
+            moviesList = {moviesList}
+            setMoviesList = {setMoviesList}/>
 
         <main>
             <Outlet />
