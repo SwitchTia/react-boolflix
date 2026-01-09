@@ -2,30 +2,28 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";
 import MovieCard from "./components/MovieCard";
-import axios from "axios";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DefaultLayout from "./layouts/DefaultLayout.jsx";
 
 
 function App() {
-  const [searchedMovieList, setSearchedMovieList] = useState ([]);
+  const [moviesList, setMoviesList] = useState([]);
+
 
 
   return (
     <div className="App">
 
       <Header
-        searchedMovieList={searchedMovieList}
-        setSearchedMovieList={setSearchedMovieList}
+        setMoviesList={setMoviesList}
+       
       />
 
       <main className="main-content">
         <div className="cards-container">
-          {searchedMovieList.map((movie) => (
+          {moviesList.map((movie) => (
 
             <MovieCard
-              key={movie.id}
+              key={`${movie.type}-${movie.id}`}
               movie={movie} />
           ))}
 
