@@ -1,6 +1,6 @@
 import "./MovieCard.css";
-import StarEmpty from "../assets/StarEmpty";
-import StarFull from "../assets/StarFull";
+import StarEmpty from "../assets/StarEmpty.jsx";
+import StarFull from "../assets/StarFull.jsx";
 
 
 function MovieCard({ movie }) {

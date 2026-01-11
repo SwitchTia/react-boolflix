@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import MovieCard from "../components/MovieCard";
+import MovieCard from "../components/MovieCard.jsx";
 
 function HomePage({ moviesList }) {
     return (
