@@ -3,12 +3,10 @@ import MovieCard from "../components/MovieCard.jsx";
 
 function HomePage({ moviesList }) {
     return (
-        <div className="page">
-
-            <h1>Search Results</h1>
+        <div >
 
             {moviesList.length === 0 ? (
-                <p className="no-results">Search for movies and TV shows above</p>
+                <p >Search for movies and TV shows</p>
             ) : (
                 <div className="cards-container">
                     {moviesList.map((movie) => (
@@ -16,6 +14,7 @@ function HomePage({ moviesList }) {
                     ))}
                 </div>
             )}
+            
         </div>
 
     )
